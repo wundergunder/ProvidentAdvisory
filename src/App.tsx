@@ -1,10 +1,23 @@
 import React from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { Bot, Hotel, MessageSquare, Mic, Shield, Users } from 'lucide-react';
+import { Bot, Hotel, MessageSquare, Mic, Shield, Users, MessageCircle, Phone, Instagram, Facebook, Globe } from 'lucide-react';
 import BookDemo from './pages/BookDemo';
 
 function App() {
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    // Load GHL chat widget script
+    const script = document.createElement('script');
+    script.src = "https://widgets.leadconnectorhq.com/loader.js";
+    script.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+    script.setAttribute('data-widget-id', '67eec9aea282cf004de9b5d8');
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -17,7 +30,6 @@ function App() {
           <div className="hidden md:flex space-x-8">
             <a href="#solutions" className="hover:text-[#FF9E1B] transition-colors">Solutions</a>
             <a href="#features" className="hover:text-[#FF9E1B] transition-colors">Features</a>
-            <a href="#contact" className="hover:text-[#FF9E1B] transition-colors">Contact</a>
           </div>
           <button 
             onClick={() => navigate('/book-demo')}
@@ -65,6 +77,89 @@ function HomePage() {
             alt="Luxury hotel lobby" 
             className="object-cover w-full h-full opacity-20"
           />
+        </div>
+      </section>
+
+      {/* Solutions Section */}
+      <section id="solutions" className="py-20">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-16 text-[#005B94]">
+            Comprehensive Communication Solutions
+          </h2>
+
+          {/* Chat Solution */}
+          <div className="grid md:grid-cols-2 gap-12 mb-20">
+            <div>
+              <h3 className="text-2xl font-bold mb-6 text-[#005B94]">
+                Omnichannel Chat Support
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Connect with guests wherever they are. Our AI-powered chat solution integrates seamlessly with multiple platforms:
+              </p>
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center space-x-2">
+                  <MessageCircle className="text-[#FF9E1B]" />
+                  <span>WhatsApp</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MessageSquare className="text-[#FF9E1B]" />
+                  <span>SMS</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Globe className="text-[#FF9E1B]" />
+                  <span>Website Chat</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Instagram className="text-[#FF9E1B]" />
+                  <span>Instagram DMs</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Facebook className="text-[#FF9E1B]" />
+                  <span>Facebook DMs</span>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?auto=format&fit=crop&w=800&q=80" 
+                alt="Hotel guest using chat service" 
+                className="rounded-lg shadow-xl"
+              />
+            </div>
+          </div>
+
+          {/* Voice Solution */}
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="order-2 md:order-1 relative">
+              <img 
+                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" 
+                alt="Voice assistant interface" 
+                className="rounded-lg shadow-xl"
+              />
+            </div>
+            <div className="order-1 md:order-2">
+              <h3 className="text-2xl font-bold mb-6 text-[#005B94]">
+                Intelligent Voice Assistant
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Our AI-powered voice solution handles calls 24/7, providing instant responses to common queries and seamless handoffs to staff when needed.
+              </p>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center space-x-3">
+                  <Phone className="text-[#FF9E1B]" />
+                  <span>Natural language processing</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Mic className="text-[#FF9E1B]" />
+                  <span>Multi-language support</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Bot className="text-[#FF9E1B]" />
+                  <span>Smart call routing</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -152,7 +247,7 @@ function HomePage() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <div>
               <img src="/logo.png" alt="Provident Advisory Group" className="h-8 mb-4" />
               <p className="text-gray-400">
@@ -166,24 +261,6 @@ function HomePage() {
                 <li>Voice Integration</li>
                 <li>Chat Support</li>
                 <li>Analytics Dashboard</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Company</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>About Us</li>
-                <li>Contact</li>
-                <li>Careers</li>
-                <li>Blog</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>info@providentadvisory.com</li>
-                <li>1-800-PROVIDENT</li>
-                <li>123 Business Ave</li>
-                <li>New York, NY 10001</li>
               </ul>
             </div>
           </div>
