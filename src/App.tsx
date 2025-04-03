@@ -1,26 +1,46 @@
 import React from 'react';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { Bot, Hotel, MessageSquare, Mic, Shield, Users } from 'lucide-react';
+import BookDemo from './pages/BookDemo';
 
 function App() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="bg-[#005B94] text-white py-4">
         <div className="container mx-auto px-6 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <img src="/logo.png" alt="Provident Advisory Group" className="h-10" />
-          </div>
+          </Link>
           <div className="hidden md:flex space-x-8">
             <a href="#solutions" className="hover:text-[#FF9E1B] transition-colors">Solutions</a>
             <a href="#features" className="hover:text-[#FF9E1B] transition-colors">Features</a>
             <a href="#contact" className="hover:text-[#FF9E1B] transition-colors">Contact</a>
           </div>
-          <button className="bg-[#FF9E1B] text-white px-6 py-2 rounded-full hover:bg-[#e88c09] transition-colors">
+          <button 
+            onClick={() => navigate('/book-demo')}
+            className="bg-[#FF9E1B] text-white px-6 py-2 rounded-full hover:bg-[#e88c09] transition-colors"
+          >
             Get Started
           </button>
         </div>
       </nav>
 
+      <Routes>
+        <Route path="/book-demo" element={<BookDemo />} />
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </div>
+  );
+}
+
+function HomePage() {
+  const navigate = useNavigate();
+  
+  return (
+    <>
       {/* Hero Section */}
       <section className="relative bg-[#005B94] text-white py-20">
         <div className="container mx-auto px-6">
@@ -31,7 +51,10 @@ function App() {
             <p className="text-xl mb-8">
               Elevate your hospitality service with intelligent booking agents that handle guest communications through chat and voice, 24/7.
             </p>
-            <button className="bg-[#FF9E1B] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#e88c09] transition-colors">
+            <button 
+              onClick={() => navigate('/book-demo')}
+              className="bg-[#FF9E1B] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#e88c09] transition-colors"
+            >
               Schedule a Demo
             </button>
           </div>
@@ -117,7 +140,10 @@ function App() {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Join leading hotels and resorts already using Provident Advisory Group's AI solutions.
           </p>
-          <button className="bg-[#FF9E1B] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#e88c09] transition-colors">
+          <button 
+            onClick={() => navigate('/book-demo')}
+            className="bg-[#FF9E1B] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#e88c09] transition-colors"
+          >
             Get Started Today
           </button>
         </div>
@@ -166,7 +192,7 @@ function App() {
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
 }
 
