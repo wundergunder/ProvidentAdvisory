@@ -132,9 +132,9 @@ function HomePage() {
           <div className="grid md:grid-cols-2 gap-12">
             <div className="order-2 md:order-1 relative">
               <img 
-                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" 
-                alt="Voice assistant interface" 
-                className="rounded-lg shadow-xl"
+                src="/operator.jpg" 
+                alt="Professional customer service representative with headset" 
+                className="rounded-lg shadow-xl object-cover w-full h-full"
               />
             </div>
             <div className="order-1 md:order-2">
